@@ -1,0 +1,22 @@
+.main {
+  width: 100%;
+  min-height: 100%;
+  padding: 27px 79px;
+  border-radius: 45px;
+  background-color: white;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__page_title {
+      font-size: 35px;
+      color: #000000;
+      line-height: 52px;
+      font-weight: bold;
+      font-family: Poppins;
+      letter-spacing: 0.02em;
+    }
+  }
+}

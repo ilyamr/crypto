@@ -1,0 +1,63 @@
+.card {
+  width: 100%;
+  height: 244px;
+  max-width: 194px;
+  position: relative;
+  padding: 28px 24px;
+  border-radius: 24px;
+  background: #e5def0;
+
+  &__cryp_sort {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__value {
+      font-size: 24px;
+      color: #000000;
+      font-weight: bold;
+      line-height: 36px;
+      margin-bottom: 5px;
+      font-family: Poppins;
+      letter-spacing: 0.02em;
+    }
+  }
+
+  &__changes {
+    font-size: 16px;
+    color: #000000;
+    line-height: 24px;
+    font-family: Poppins;
+    letter-spacing: 0.02em;
+  }
+  &__procent_block {
+    left: 0;
+    right: 0;
+    width: 80%;
+    bottom: 24px;
+    display: flex;
+    margin: 0 auto;
+    position: absolute;
+    align-items: center;
+    justify-content: space-between;
+
+    &__valute {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      border-radius: 14px;
+      background: #ffffff;
+      justify-content: center;
+    }
+
+    &__value {
+      font-family: Poppins;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 22px;
+      letter-spacing: 0.02em;
+      color: #896ab9;
+    }
+  }
+}

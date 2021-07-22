@@ -1,0 +1,27 @@
+.user {
+  height: 52px;
+  display: flex;
+  max-width: 100%;
+  position: relative;
+  padding: 0 21px 0 0;
+  border-radius: 27px;
+  align-items: center;
+  background: #f2f5fa;
+
+  &__icon {
+    width: 60px;
+    height: 60px;
+    bottom: 10px;
+    position: absolute;
+  }
+
+  &__name {
+    font-size: 17px;
+    color: #0b1432;
+    font-weight: 500;
+    line-height: 25px;
+    margin: 0 8px 0 70px;
+    font-family: Poppins;
+    letter-spacing: 0.02em;
+  }
+}
