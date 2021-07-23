@@ -14,7 +14,7 @@ const PersonalZone = ({ main, children }) => {
         </p>
         <UserComponent />
       </div>
-      <div>{children}</div>
+      {children}
     </main>
   );
 };

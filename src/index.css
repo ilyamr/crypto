@@ -83,6 +83,7 @@ figcaption {
 }
 body {
   height: 100%;
+  background: #202020;
 }
 table {
   border-spacing: 0;

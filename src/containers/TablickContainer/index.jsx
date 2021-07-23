@@ -43,8 +43,8 @@ const TablickContainer = () => {
       <CryptoCard
         key={item.id}
         src={item.src}
-        cryptoSort={item.cryptoSort}
         procent={item.procent}
+        cryptoSort={item.cryptoSort}
         cryptovalute={item.cryptovalute}
         crypChangeUSD={item.crypChangeUSD}
       />
@@ -56,8 +56,8 @@ const TablickContainer = () => {
       <CryptoCard
         key={item.id}
         src={item.src}
-        cryptoSort={item.cryptoSort}
         procent={item.procent}
+        cryptoSort={item.cryptoSort}
         cryptovalute={item.cryptovalute}
         crypChangeUSD={item.crypChangeUSD}
       />
