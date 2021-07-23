@@ -7,6 +7,26 @@
   background-color: white;
   border-radius: 50px;
 
+  &__disabled_btn {
+    background: #f2f5fa;
+    border-radius: 27px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 0;
+    max-width: 173px;
+    width: 100%;
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 25px;
+    letter-spacing: 0.02em;
+    color: #b6b6b6;
+    cursor: not-allowed;
+    margin-bottom: 11px;
+  }
+
   &__title {
     font-size: 36px;
     color: #0b1432;
