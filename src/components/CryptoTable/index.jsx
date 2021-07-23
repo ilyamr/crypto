@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { ReactComponent as UserArrow } from "../../icons/userclickicon.svg";
+import { renderGainers, renderRow } from "../../utils";
+import { DropDown } from "../index";
 
 import styles from "./CryptoTable.module.scss";
 
-const CryptoTable = ({ tablickIsDown, tablick_count }) => {
+const CryptoTable = ({ tablickIsDown }) => {
   return (
     <div className={styles.tablick}>
       <div className={styles.tablick__filtered}>
@@ -13,15 +14,8 @@ const CryptoTable = ({ tablickIsDown, tablick_count }) => {
           Market is down {tablickIsDown}
         </p>
         <div className={styles.tablick__filtered_btns}>
-          <button
-            value={tablick_count}
-            className={styles.tablick__filtered_btns__count}
-          >
-            {tablick_count}h <UserArrow />
-          </button>
-          <button className={styles.tablick__filtered_btns__sortid}>
-            Top gainers <UserArrow />
-          </button>
+          <DropDown renderRow={renderRow} />
+          <DropDown renderRow={renderGainers} />
         </div>
       </div>
       <div className={styles.tablick__titles}>
@@ -37,12 +31,10 @@ const CryptoTable = ({ tablickIsDown, tablick_count }) => {
 
 CryptoTable.propTypes = {
   tablickIsDown: PropTypes.string,
-  tablick_count: PropTypes.string,
 };
 
 CryptoTable.defaultProps = {
   tablickIsDown: "0.80%",
-  tablick_count: "24",
 };
 
 export default CryptoTable;

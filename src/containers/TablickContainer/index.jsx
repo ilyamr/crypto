@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import shortid from "shortid";
 
 import {
@@ -7,11 +7,24 @@ import {
   CryptoTable,
   StatistickTable,
 } from "../../components";
-import { cryptodata } from "../../utils";
+import { useWindowSize } from "../../hooks";
+import { cryptodata, cryptocard } from "../../utils";
 
 import styles from "./TablickContainer.module.scss";
 
 const TablickContainer = () => {
+  const [diplayRender, setDiplayRender] = useState(2);
+
+  const windowSize = useWindowSize().windowWidth;
+
+  useEffect(() => {
+    if (windowSize <= 950) {
+      setDiplayRender(cryptocard.length);
+    } else if (windowSize >= 950) {
+      setDiplayRender(2);
+    }
+  }, [windowSize]);
+
   const renderItems = cryptodata.map((item) => (
     <CryptoItem
       key={shortid.generate()}
@@ -24,13 +37,37 @@ const TablickContainer = () => {
     />
   ));
 
+  const renderCrypto = cryptocard
+    .slice(0, diplayRender)
+    .map((item) => (
+      <CryptoCard
+        key={item.id}
+        src={item.src}
+        cryptoSort={item.cryptoSort}
+        procent={item.procent}
+        cryptovalute={item.cryptovalute}
+        crypChangeUSD={item.crypChangeUSD}
+      />
+    ));
+
+  const renderCryptoCard = cryptocard
+    .slice(diplayRender)
+    .map((item) => (
+      <CryptoCard
+        key={item.id}
+        src={item.src}
+        cryptoSort={item.cryptoSort}
+        procent={item.procent}
+        cryptovalute={item.cryptovalute}
+        crypChangeUSD={item.crypChangeUSD}
+      />
+    ));
+
   return (
     <div className={styles.visual}>
       <div className={styles.visual__statick_cards}>
         <StatistickTable />
-        <CryptoCard />
-        <CryptoCard />
-        <CryptoCard />
+        <div className={styles.visual__statick_cards__card}>{renderCrypto}</div>
       </div>
       <div className={styles.visual__tablick}>
         <div className={styles.visual__tablick__container}>
@@ -38,8 +75,7 @@ const TablickContainer = () => {
           {renderItems}
         </div>
         <div className={styles.visual__tablick__cards_container}>
-          <CryptoCard />
-          <CryptoCard />
+          {renderCryptoCard}
         </div>
       </div>
     </div>

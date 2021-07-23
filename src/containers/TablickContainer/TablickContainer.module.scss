@@ -7,6 +7,21 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
+    @media (max-width: 1072px) {
+      display: block;
+    }
+    &__card {
+      width: 100%;
+      display: flex;
+      max-width: 55%;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      @media (max-width: 1072px) {
+        max-width: 100%;
+      }
+    }
   }
 
   &__tablick {
@@ -17,6 +32,10 @@
     &__container {
       width: 100%;
       max-width: 689px;
+
+      @media (max-width: 950px) {
+        max-width: 100%;
+      }
     }
 
     &__cards_container {
@@ -25,6 +44,14 @@
       flex-wrap: wrap;
       max-width: 414px;
       justify-content: space-between;
+
+      @media (max-width: 1220px) {
+        max-width: 194px;
+        flex-direction: column;
+      }
+      @media (max-width: 950px) {
+        display: none;
+      }
     }
   }
 }

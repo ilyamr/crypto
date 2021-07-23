@@ -1,5 +1,8 @@
 export { default as Input } from "./Input";
+export { default as Login } from "./Login";
 export { default as NavBar } from "./NavBar";
+export { default as Register } from "./Register";
+export { default as DropDown } from "./DropDown";
 export { default as CryptoCard } from "./CryptoCard";
 export { default as CryptoItem } from "./CryptoItem";
 export { default as CryptoTable } from "./CryptoTable";

@@ -5,7 +5,13 @@ import { ReactComponent as Setting } from "../../icons/threepuls.svg";
 
 import styles from "./CryptoCard.module.scss";
 
-const CryptoCard = ({ cryptovalute, cryptoSort, crypChangeUSD, procent }) => {
+const CryptoCard = ({
+  src,
+  procent,
+  cryptoSort,
+  cryptovalute,
+  crypChangeUSD,
+}) => {
   return (
     <div className={styles.card}>
       <div className={styles.card__cryp_sort}>
@@ -17,15 +23,16 @@ const CryptoCard = ({ cryptovalute, cryptoSort, crypChangeUSD, procent }) => {
       <span className={styles.card__changes}>$ {crypChangeUSD}</span>
       <div className={styles.card__procent_block}>
         <div className={styles.card__procent_block__valute}>
-          <img src="/images/btc.png" alt="ddd" />
+          <img src={`/images/${src}`} alt="img" />
         </div>
-        <p className={styles.card__procent_block__value}>{procent}</p>
+        <p className={styles.card__procent_block__value}>{procent}%</p>
       </div>
     </div>
   );
 };
 
 CryptoCard.propTypes = {
+  src: PropTypes.string,
   children: PropTypes.any,
   procent: PropTypes.string,
   cryptoSort: PropTypes.string,
@@ -34,8 +41,9 @@ CryptoCard.propTypes = {
 };
 
 CryptoCard.defaultProps = {
-  cryptoSort: "ETH",
-  procent: "+ 0.14%",
+  src: "btc.png",
+  cryptoSort: "BTC",
+  procent: "+ 0.14",
   cryptovalute: "1.25",
   crypChangeUSD: "2948.04",
 };
