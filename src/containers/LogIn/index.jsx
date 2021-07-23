@@ -24,8 +24,7 @@ const Login = ({ emailValue, emailChange, passwordValue, passwordChange }) => {
         value={passwordValue}
         placeholder="Password"
         onChange={passwordChange}
-        clas
-        sName={styles.login__password}
+        className={styles.login__password}
       />
       <Link className={styles.login__log_btn} to="/users">
         Login
