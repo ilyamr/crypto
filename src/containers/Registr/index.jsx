@@ -1,18 +1,32 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { noop } from "../../utils";
 import { UploadPhoto } from "../../components";
 
 import styles from "./Register.module.scss";
 
-const Register = ({
-  regEmailValue,
-  regEmailChange,
-  regPasswordValue,
-  regPasswordChange,
-}) => {
+const Register = () => {
+  const [register, setRegister] = useState(false);
+
+  const [regEmailValue, setRegEmailValue] = useState("");
+  const [regPasswordValue, setRegPasswordValue] = useState("");
+
+  const regEmailChange = (e) => {
+    setRegEmailValue(e.target.value);
+  };
+
+  const regPasswordChange = (e) => {
+    setRegPasswordValue(e.target.value);
+  };
+
+  useEffect(() => {
+    if (regEmailValue.trim() !== "" && regPasswordValue.trim() !== "") {
+      setRegister(true);
+    } else if (regEmailValue.trim() === "" || regPasswordValue.trim() === "") {
+      setRegister(false);
+    }
+  }, [regEmailValue, regPasswordValue]);
+
   return (
     <div className={styles.register}>
       <h1 className={styles.register__title}>Register</h1>
@@ -20,7 +34,7 @@ const Register = ({
       <input
         value={regEmailValue}
         onChange={regEmailChange}
-        type="text"
+        type="email"
         placeholder="Email"
         className={styles.register__email}
       />
@@ -31,28 +45,16 @@ const Register = ({
         placeholder="Password"
         className={styles.register__password}
       />
-      <Link to="/users" className={styles.register__log_btn}>
-        Login
-      </Link>
-      <Link to="/registration" className={styles.register__reg_btn}>
-        Register
+      <Link
+        to={register ? "/users" : "/registration"}
+        className={
+          register ? styles.register__reg_btn : styles.register__disabled_btn
+        }
+      >
+        Registration
       </Link>
     </div>
   );
-};
-
-Register.propTypes = {
-  regEmailChange: PropTypes.func,
-  regEmailValue: PropTypes.string,
-  regPasswordChange: PropTypes.func,
-  regPasswordValue: PropTypes.string,
-};
-
-Register.defaultProps = {
-  regEmailValue: "",
-  regEmailChange: noop,
-  regPasswordValue: "",
-  regPasswordChange: noop,
 };
 
 export default Register;
