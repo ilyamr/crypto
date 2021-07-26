@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Registr, LogIn, TablickContainer } from "./containers";
+import { Registr, TableTablick, LogIn, TablickContainer } from "./containers";
 import { NavBar, PersonalZone, CrypContainer } from "./components";
 
 import styles from "./globalStyles.module.scss";
@@ -23,6 +23,12 @@ const App = () => {
               <PersonalZone>
                 <TablickContainer />
               </PersonalZone>
+            </section>
+          </Route>
+          <Route path="/table_tablick">
+            <section className={styles.global}>
+              <NavBar />
+              <TableTablick />
             </section>
           </Route>
         </Switch>
