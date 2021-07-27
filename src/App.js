@@ -14,9 +14,11 @@ const App = () => {
           <Route exact path="/">
             <LogIn />
           </Route>
+
           <Route path="/registration">
             <Registr />
           </Route>
+
           <Route path="/users">
             <section className={styles.global}>
               <NavBar />
@@ -25,6 +27,7 @@ const App = () => {
               </PersonalZone>
             </section>
           </Route>
+
           <Route path="/table_tablick">
             <section className={styles.global}>
               <NavBar />

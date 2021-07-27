@@ -19,24 +19,17 @@ const TableTablick = () => {
     />
   ));
 
-  const bbbb = [];
-  console.log(bbbb);
-
-  //exchange: 2,---- derivatives: 2, exchange_rates: `1`, global: 1
-  // Coin name          -
-  // Coin id            -
-  // Coin img           +  "derivatives 2" ::::  image
-  // Coin chanee ach
-  // Coin price         +  "global: 1, exchange"
-  // Coin market cap
-  /////////////////////////////////////////////////////
-  //              PRIMARY           array[ALL].length === 6
-  // Coin name                  Bit Coin
-  // Coin id                    BTC
-  // Coin img                   https://url/image/size....
-  // Coin chanee ach            + && - 7.5%
-  // Coin price                 $56.9
-  // Coin market cap            $399.8M
+  // https://api.coingecko.com/api/v3/coins/list  ||||||||
+  // (title: name) (subname: symbol) (id: id)
+  // Coin title         + TODAY
+  // Coin subname       + TODAY
+  // Coin id            + TODAY
+  // https://api.coingecko.com/api/v3/coins/${id}  ||||||
+  // (src: image)  (market_cap: market_cap_rank) (chanee: market_data.price_change_percentage_24h)
+  // Coin img           + TODAY
+  // Coin market cap    + TODAY
+  // Coin chanee ach    + TODAY
+  // Coin price         +++(price: tickers[0].converted_last.usd)
   /////////////////////////////////////////////////////
 
   return (
