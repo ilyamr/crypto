@@ -16,20 +16,16 @@ const CryptoItem = ({ title, subname, src, price, chanee, market_cap }) => {
     <div className={styles.item}>
       <div className={styles.item__name}>
         <div className={styles.item__name__logo}>
-          <img
-            alt="i"
-            src={`/images/${src}`}
-            className={styles.item__name__logo__img}
-          />
+          <img alt="i" src={src} className={styles.item__name__logo__img} />
         </div>
         <div className={styles.item__name__block}>
           <p className={styles.item__name__block__title}>{title}</p>
           <span className={styles.item__name__block__subname}>{subname}</span>
         </div>
       </div>
-      <p className={styles.item__price}>${price}</p>
+      <p className={styles.item__price}>{price}$</p>
       <p className={styles.item__chanee}>{chanee}%</p>
-      <p className={styles.item__market}>${market_cap}</p>
+      <p className={styles.item__market}>{market_cap}</p>
       <button onClick={favoriteCrypto} className={styles.item__watch}>
         <Watch className={watch ? styles.item__watch__icon : null} />
       </button>
@@ -39,20 +35,18 @@ const CryptoItem = ({ title, subname, src, price, chanee, market_cap }) => {
 
 CryptoItem.propTypes = {
   src: PropTypes.string,
-  price: PropTypes.string,
+  price: PropTypes.number,
   title: PropTypes.string,
-  chanee: PropTypes.string,
   subname: PropTypes.string,
-  market_cap: PropTypes.string,
+  market_cap: PropTypes.number,
 };
 
 CryptoItem.defaultProps = {
   src: "band-protocol.png",
-  price: "0.0184",
-  subname: "BAND",
-  chanee: "+13.38",
-  market_cap: "399.8",
-  title: "Band Protocol",
+  price: 6666666,
+  subname: "666",
+  market_cap: 6666,
+  title: "6666",
 };
 
 export default CryptoItem;
