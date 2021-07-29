@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// import { useSelector, useDispatch } from "react-redux";
 
 import { PersonalZone, CryptoTable, CryptoItem } from "../../components";
 
@@ -6,6 +7,8 @@ import styles from "./TableTablick.module.scss";
 
 const TableTablick = () => {
   const [otherApi, setOtherApi] = useState([]);
+
+  // const dispatch = useDispatch();
 
   const RUARL = "https://api.coingecko.com/api/v3/coins";
 
@@ -21,9 +24,16 @@ const TableTablick = () => {
         item.market_data.price_change_percentage_24h.toString().slice(0, 1) !==
         "-"
       ) {
-        return `+${item.market_data.price_change_percentage_24h}`;
-      } else {
-        return item.market_data.price_change_percentage_24h;
+        return `+ ${item.market_data.price_change_percentage_24h}`;
+      } else if (
+        item.market_data.price_change_percentage_24h.toString().slice(0, 1) ===
+        "-"
+      ) {
+        return `${item.market_data.price_change_percentage_24h
+          .toString()
+          .slice(0, 1)} ${item.market_data.price_change_percentage_24h
+          .toString()
+          .slice(1)}`;
       }
     };
     return (

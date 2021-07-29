@@ -4,17 +4,17 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import { reducers } from "./store/reducers";
-
 import App from "./App";
+import { auth } from "./store/reducers";
 
 import "./index.css";
 
-const store = createStore(reducers, composeWithDevTools());
+const store = createStore(auth, composeWithDevTools());
 
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
+
   document.getElementById("root")
 );

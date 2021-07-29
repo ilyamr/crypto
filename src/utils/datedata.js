@@ -4,17 +4,20 @@ export const renderRow = [
   {
     title: "24 h",
     id: shortid.generate(),
-    value: new Date().getDate() - 1,
+    // value: new Date().getDate() - 1,
+    value: "price_change_percentage_24h",
   },
   {
-    title: "Mounthl",
+    title: "7 Day",
     id: shortid.generate(),
-    value: new Date().getMonth(),
+    // value: new Date().getMonth(),
+    value: "price_change_percentage_7d",
   },
   {
-    title: "Year",
+    title: "14 Day",
     id: shortid.generate(),
-    value: new Date().getFullYear() - 1,
+    // value: new Date().getFullYear() - 1,
+    value: "price_change_percentage_14d",
   },
 ];
 

@@ -23,7 +23,7 @@ const CryptoCard = ({
       <span className={styles.card__changes}>$ {crypChangeUSD}</span>
       <div className={styles.card__procent_block}>
         <div className={styles.card__procent_block__valute}>
-          <img src={`/images/${src}`} alt="img" />
+          <img src={src} alt="img" />
         </div>
         <p className={styles.card__procent_block__value}>{procent}%</p>
       </div>
@@ -33,19 +33,19 @@ const CryptoCard = ({
 
 CryptoCard.propTypes = {
   src: PropTypes.string,
+  procent: PropTypes.any,
   children: PropTypes.any,
-  procent: PropTypes.string,
   cryptoSort: PropTypes.string,
-  cryptovalute: PropTypes.string,
-  crypChangeUSD: PropTypes.string,
+  cryptovalute: PropTypes.number,
+  crypChangeUSD: PropTypes.number,
 };
 
 CryptoCard.defaultProps = {
   src: "btc.png",
+  procent: 66666,
   cryptoSort: "BTC",
-  procent: "+ 0.14",
-  cryptovalute: "1.25",
-  crypChangeUSD: "2948.04",
+  cryptovalute: 666,
+  crypChangeUSD: 6666,
 };
 
 export default CryptoCard;

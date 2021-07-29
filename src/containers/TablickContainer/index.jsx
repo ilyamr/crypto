@@ -14,6 +14,15 @@ import styles from "./TablickContainer.module.scss";
 
 const TablickContainer = () => {
   const [diplayRender, setDiplayRender] = useState(2);
+  const [otherApi, setOtherApi] = useState([]);
+
+  const RUARL = "https://api.coingecko.com/api/v3/coins";
+
+  useEffect(() => {
+    fetch(RUARL)
+      .then((response) => response.json())
+      .then((resp) => setOtherApi(resp));
+  }, []);
 
   const windowSize = useWindowSize().windowWidth;
 
@@ -37,31 +46,51 @@ const TablickContainer = () => {
     />
   ));
 
-  const renderCrypto = cryptocard
-    .slice(0, diplayRender)
-    .map((item) => (
+  const renderCrypto = otherApi.slice(0, diplayRender).map((item) => {
+    const chaneeHandler = () => {
+      if (
+        item.market_data.price_change_percentage_24h.toString().slice(0, 1) !==
+        "-"
+      ) {
+        return `+${item.market_data.price_change_percentage_24h}`;
+      } else {
+        return item.market_data.price_change_percentage_24h;
+      }
+    };
+    return (
       <CryptoCard
         key={item.id}
-        src={item.src}
-        procent={item.procent}
-        cryptoSort={item.cryptoSort}
-        cryptovalute={item.cryptovalute}
-        crypChangeUSD={item.crypChangeUSD}
+        src={item.image.small}
+        procent={chaneeHandler()}
+        cryptoSort={item.symbol}
+        cryptovalute={item.market_data.market_cap_rank}
+        crypChangeUSD={item.market_data.current_price.usd}
       />
-    ));
+    );
+  });
 
-  const renderCryptoCard = cryptocard
-    .slice(diplayRender)
-    .map((item) => (
+  const renderCryptoCard = otherApi.slice(diplayRender).map((item) => {
+    const chaneeHandler = () => {
+      if (
+        item.market_data.price_change_percentage_24h.toString().slice(0, 1) !==
+        "-"
+      ) {
+        return `+${item.market_data.price_change_percentage_24h}`;
+      } else {
+        return item.market_data.price_change_percentage_24h;
+      }
+    };
+    return (
       <CryptoCard
         key={item.id}
-        src={item.src}
-        procent={item.procent}
-        cryptoSort={item.cryptoSort}
-        cryptovalute={item.cryptovalute}
-        crypChangeUSD={item.crypChangeUSD}
+        src={item.image.small}
+        procent={chaneeHandler()}
+        cryptoSort={item.symbol}
+        cryptovalute={item.market_data.market_cap_rank}
+        crypChangeUSD={item.market_data.current_price.usd}
       />
-    ));
+    );
+  });
 
   return (
     <div className={styles.visual}>
