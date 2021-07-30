@@ -1,24 +1,25 @@
-import React, { useState, useEffect } from "react";
-// import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
+import { authActions } from "../../store/actions";
+import { cryptoSelector } from "../../store/selectors";
 import { PersonalZone, CryptoTable, CryptoItem } from "../../components";
 
 import styles from "./TableTablick.module.scss";
 
 const TableTablick = () => {
-  const [otherApi, setOtherApi] = useState([]);
+  const selectCrypto = useSelector(cryptoSelector.cryptoApi);
+  const selectCryptoProcent = useSelector(cryptoSelector.cryptoProcent);
 
-  // const dispatch = useDispatch();
-
-  const RUARL = "https://api.coingecko.com/api/v3/coins";
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(RUARL)
-      .then((response) => response.json())
-      .then((resp) => setOtherApi(resp));
+    dispatch(authActions.getCoinList());
+    dispatch(authActions.getCoinProcent());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const renderItems = otherApi?.map((item) => {
+  const renderItems = selectCrypto?.map((item) => {
     const chaneeHandler = () => {
       if (
         item.market_data.price_change_percentage_24h.toString().slice(0, 1) !==
@@ -52,9 +53,15 @@ const TableTablick = () => {
   return (
     <PersonalZone main>
       <div className={styles.table_tablick}>
-        {otherApi.length ? (
+        {selectCrypto.length ? (
           <>
-            <CryptoTable />
+            <CryptoTable
+              tablickIsDown={
+                selectCryptoProcent !== 0
+                  ? `Market is down ${selectCryptoProcent}%`
+                  : "No information about global procent"
+              }
+            />
             {renderItems}
           </>
         ) : (

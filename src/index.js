@@ -1,20 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore } from "redux";
 import { Provider } from "react-redux";
-import { composeWithDevTools } from "redux-devtools-extension";
+import { PersistGate } from "redux-persist/integration/react";
 
 import App from "./App";
-import { auth } from "./store/reducers";
+import { configureStore } from "./libraries";
 
 import "./index.css";
 
-const store = createStore(auth, composeWithDevTools());
+const { store, persistor } = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
   </Provider>,
-
   document.getElementById("root")
 );

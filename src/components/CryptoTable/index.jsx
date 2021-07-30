@@ -10,9 +10,7 @@ const CryptoTable = ({ tablickIsDown }) => {
   return (
     <div className={styles.tablick}>
       <div className={styles.tablick__filtered}>
-        <p className={styles.tablick__filtered__title}>
-          Market is down {tablickIsDown}
-        </p>
+        <p className={styles.tablick__filtered__title}>{tablickIsDown}</p>
         <div className={styles.tablick__filtered_btns}>
           <DropDown renderRow={renderRow} />
           <DropDown renderRow={renderGainers} />
@@ -34,7 +32,7 @@ CryptoTable.propTypes = {
 };
 
 CryptoTable.defaultProps = {
-  tablickIsDown: "0.80%",
+  tablickIsDown: "No information about global procent",
 };
 
 export default CryptoTable;
